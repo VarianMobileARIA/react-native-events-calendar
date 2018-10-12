@@ -151,11 +151,15 @@ export default class DayView extends React.PureComponent {
           style={[
             styles.event,
             style,
-            {
-              borderColor: event.ActivityColor,
-              borderWidth: 2,
-              backgroundColor: event.status === "Open" ? "white" : "#D3D3D3"
-            }
+             {
+                borderColor: event.ActivityColor,
+                borderWidth: 2,
+                backgroundColor:
+                  event.status === "Open" ||
+                  event.status === "In Progress (Manually Set)"
+                    ? "white"
+                    : "#D3D3D3"
+              }
           ]}
         >
           {this.props.renderEvent ? (

@@ -1,5 +1,5 @@
 // @flow
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, ImageBackground } from "react-native";
 import populateEvents from "./Packer";
 import React from "react";
 import moment from "moment";
@@ -151,44 +151,23 @@ export default class DayView extends React.PureComponent {
           style={[
             styles.event,
             style,
-             {
-                borderColor: event.ActivityColor,
-                borderWidth: 2,
-                backgroundColor:
-                  event.status === "Open" ||
-                  event.status === "In Progress (Manually Set)"
-                    ? "white"
-                    : "#D3D3D3"
-              }
+            {
+              borderColor: event.ActivityColor,
+              borderWidth: 2,
+              backgroundColor: event.ActivityColor + "48"
+            }
           ]}
         >
-          {this.props.renderEvent ? (
-            this.props.renderEvent(event)
+          {event.status === "Open" ||
+          event.status === "In Progress (Manually Set)" ? (
+            <View>{this.props.renderEvent(event)}</View>
           ) : (
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() =>
-                this._onEventTapped(this.props.events[event.index])
-              }
+            <ImageBackground
+              source={require("./line_shade.png")}
+              style={{ width: "100%", height: "100%" }}
             >
-              <Text numberOfLines={1} style={styles.eventTitle}>
-                {event.title || "Event"}
-              </Text>
-              {numberOfLines > 1 ? (
-                <Text
-                  numberOfLines={numberOfLines - 1}
-                  style={[styles.eventSummary]}
-                >
-                  {event.summary || " "}
-                </Text>
-              ) : null}
-              {numberOfLines > 2 ? (
-                <Text style={styles.eventTimes} numberOfLines={1}>
-                  {moment(event.start).format(formatTime)} -{" "}
-                  {moment(event.end).format(formatTime)}
-                </Text>
-              ) : null}
-            </TouchableOpacity>
+              {this.props.renderEvent(event)}
+            </ImageBackground>
           )}
         </View>
       );

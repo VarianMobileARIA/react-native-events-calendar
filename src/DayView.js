@@ -146,11 +146,7 @@ export default class DayView extends React.PureComponent {
       event.formatTime = formatTime;
 
       return (
-         <TouchableOpacity
-          activeOpacity={0.5}
-          onPress={() => this._onEventTapped(this.props.events[event.index])}
-          key={i}
-        >
+       
         <View
           key={i}
           style={[
@@ -175,7 +171,7 @@ export default class DayView extends React.PureComponent {
             </ImageBackground>
           )}
         </View>
-        </TouchableOpacity>
+       
       );
     });
 

@@ -1,5 +1,11 @@
 // @flow
-import { View, Text, ScrollView, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  ImageBackground,
+  TouchableOpacity
+} from "react-native";
 import populateEvents from "./Packer";
 import React from "react";
 import moment from "moment";
@@ -81,7 +87,7 @@ export default class DayView extends React.PureComponent {
     return range(0, 25).map((item, i) => {
       let timeText;
       if (i === 0) {
-        timeText = ``;
+        timeText = !format24h ? `12 AM` : 0;
       } else if (i < 12) {
         timeText = !format24h ? `${i} AM` : i;
       } else if (i === 12) {
@@ -144,11 +150,11 @@ export default class DayView extends React.PureComponent {
       const formatTime = this.props.format24h ? "HH:mm" : "hh:mm A";
       event.numberOfLines = numberOfLines;
       event.formatTime = formatTime;
-
+      // resizeMode="repeat"
       return (
-       
-        <View
+        <TouchableOpacity
           key={i}
+          activeOpacity={0.5}
           style={[
             styles.event,
             style,
@@ -158,20 +164,21 @@ export default class DayView extends React.PureComponent {
               backgroundColor: event.ActivityColor + "48"
             }
           ]}
+          onPress={() => this._onEventTapped(this.props.events[event.index])}
         >
-          {event.status === "Open" ||
-          event.status === "In Progress (Manually Set)" ? (
-            <View>{this.props.renderEvent(event)}</View>
-          ) : (
-            <ImageBackground
-              source={require("./line_shade.png")}
-              style={{ width: "100%", height: "100%" }}
-            >
-              {this.props.renderEvent(event)}
-            </ImageBackground>
-          )}
-        </View>
-       
+          <View key={i}>
+            {event.status === "Open" || event.status === "In Progress" ? (
+              <View>{this.props.renderEvent(event)}</View>
+            ) : (
+              <ImageBackground
+                source={require("./line_shade.png")}
+                style={{ width: "100%", height: "100%" }}
+              >
+                {this.props.renderEvent(event)}
+              </ImageBackground>
+            )}
+          </View>
+        </TouchableOpacity>
       );
     });
 
@@ -194,7 +201,7 @@ export default class DayView extends React.PureComponent {
       >
         {this._renderLines()}
         {this._renderEvents()}
-        {/*this._renderRedLine()*/}
+        {this._renderRedLine()}
       </ScrollView>
     );
   }

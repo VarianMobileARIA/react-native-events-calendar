@@ -39,13 +39,15 @@ export default function styleConstructor(theme = {}) {
     },
     event: {
       position: "absolute",
+
       opacity: 0.8,
+
       borderWidth: 1,
       borderRadius: 5,
       paddingLeft: 2,
       minHeight: 25,
       flex: 1,
-      paddingTop: 2,
+
       paddingBottom: 0,
       flexDirection: "column",
       alignItems: "flex-start",
@@ -73,7 +75,6 @@ export default function styleConstructor(theme = {}) {
       ...theme.eventTimes
     },
     line: {
-      marginTop: 10,
       height: 1,
       position: "absolute",
       left: leftMargin,
@@ -88,7 +89,7 @@ export default function styleConstructor(theme = {}) {
       ...theme.line
     },
     timeLabel: {
-      marginTop: 10,
+      marginTop: 4,
       position: "absolute",
       left: 15,
       color: "rgb(170,170,170)",

@@ -52,22 +52,30 @@ export default class EventCalendar extends React.Component {
   }
 
   render() {
-    const { width, virtualizedListProps, events, format24h, initDate, scrollToFirst } = this.props;
+    const {
+      width,
+      virtualizedListProps,
+      events,
+      format24h,
+      initDate,
+      scrollToFirst
+    } = this.props;
     return (
       <View style={[this.styles.container, { width }]}>
-          <DayView
-              date={moment(initDate)}
-              index={0}
-              format24h={format24h}
-              formatHeader={this.props.formatHeader}
-              headerStyle={this.props.headerStyle}
-              renderEvent={this.props.renderEvent}
-              eventTapped={this.props.eventTapped}
-              events={events}
-              width={width}
-              styles={this.styles}
-              scrollToFirst={scrollToFirst}
-          />
+        <DayView
+          date={moment(initDate)}
+          index={0}
+          format24h={format24h}
+          formatHeader={this.props.formatHeader}
+          headerStyle={this.props.headerStyle}
+          renderEvent={this.props.renderEvent}
+          eventTapped={this.props.eventTapped}
+          longTapped={this.props.longTapped}
+          events={events}
+          width={width}
+          styles={this.styles}
+          scrollToFirst={scrollToFirst}
+        />
       </View>
     );
   }

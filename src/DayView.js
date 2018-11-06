@@ -133,6 +133,10 @@ export default class DayView extends React.PureComponent {
     this.props.eventTapped(event);
   }
 
+  _onlongTapped(event) {
+    this.props.longTapped(event);
+  }
+
   _renderEvents() {
     const { styles } = this.props;
     const { packedEvents } = this.state;
@@ -164,6 +168,7 @@ export default class DayView extends React.PureComponent {
               backgroundColor: event.ActivityColor + "48"
             }
           ]}
+          onLongPress={() => this._onlongTapped(this.props.events[event.index])}
           onPress={() => this._onEventTapped(this.props.events[event.index])}
         >
           <View key={i}>

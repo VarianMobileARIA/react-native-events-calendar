@@ -165,7 +165,8 @@ export default class DayView extends React.PureComponent {
             {
               borderColor: event.ActivityColor,
               borderWidth: 2,
-              backgroundColor: event.ActivityColor + "48"
+              backgroundColor: event.ActivityColor + "48",
+              borderRadius: 1
             }
           ]}
           onLongPress={() => this._onlongTapped(this.props.events[event.index])}

@@ -164,7 +164,7 @@ export default class DayView extends React.PureComponent {
             style,
             {
               borderColor: event.ActivityColor,
-              borderWidth: 2,
+              borderWidth: (event.ActivityColor && event.ActivityColor !== '#') ? 2 : 1,
               backgroundColor: event.ActivityColor + "48",
               borderRadius: 1
             }

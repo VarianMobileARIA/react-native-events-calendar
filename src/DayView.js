@@ -177,7 +177,8 @@ export default class DayView extends React.PureComponent {
               <View>{this.props.renderEvent(event)}</View>
             ) : (
               <ImageBackground
-                source={require("./line_shade.png")}
+                source={{uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAQAAAAngNWGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfjBgcKGRzMBX4UAAAACXZwQWcAAAAWAAAAFgDcxelYAAABL0lEQVQoz22SQWoCQRBFX5tgRsgRktUMXkDIYUIuILh1EHfJZTyHSxMQ0VmabHKIQEh8WUxPRdRedcPj1a+qBgDEZM+UXwNv823kwoP6c91iJBImAexzSF8g3PFASQKuzm2FRb5VTlzankM6sRWkbBvyxCMlAG+8n9oGYZvZZNvSsSOOsJu2qFhau87Y3ol3wMVsUzcZa3y2kjhdUbFyHkXXzhxyjoGVtduMbaw7m7eA/chWOQ+scWoZ6Qc48CY/S6fuMrZ1HrbCfidtbXW0sLW2inUWxymHzmIguyPbMSZWvkSnG6dh+x9ZArx34j4GUltGti59socjx7H6xtl5trxkF65iWc8OvYgJHmL1k0vZMgYZWzn23m68/TOMHr+AfPCaPlM71176zp0m7H7NH8GKWeYoMZZIAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTA2LTA3VDEyOjI1OjI3KzAyOjAw2qo5qQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wNi0wN1QxMjoyNToyNyswMjowMKv3gRUAAAAASUVORK5CYII="}}
+                imageStyle={{resizeMode: 'repeat'}}
                 style={{ width: "100%", height: "100%" }}
               >
                 {this.props.renderEvent(event)}
